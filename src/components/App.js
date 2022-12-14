@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { fetchImages } from '../components/Api/Api';
 import { Button } from './Button/Button';
 import { ImageGallery } from './ImageGallery/ImageGallery';
-import { Modal } from './Modal/Modal.styled';
+import { Modal } from './Modal/Modal';
 import { SearchBar } from './SearchBar/SearchBar';
 
 export class App extends Component {
