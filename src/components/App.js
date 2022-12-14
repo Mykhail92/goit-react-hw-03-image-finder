@@ -76,16 +76,15 @@ export class App extends Component {
           paddingBottom: '24px',
         }}
       >
-        <React.Fragment>
-          <SearchBar onSubmit={this.handleSubmit} />
-          <ImageGallery
-            images={this.state.images}
-            onImageClick={this.handleClickModal}
-          />
-          {this.state.images.length > 0 ? (
-            <Button onClick={this.loadMoreClick} />
-          ) : null}
-        </React.Fragment>
+        <SearchBar onSubmit={this.handleSubmit} />
+        <ImageGallery
+          images={this.state.images}
+          onImageClick={this.handleClickModal}
+        />
+        {this.state.images.length > 0 ? (
+          <Button onClick={this.loadMoreClick} />
+        ) : null}
+
         {this.state.isModalOpen ? (
           <Modal
             src={this.state.imgSrc}
