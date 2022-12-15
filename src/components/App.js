@@ -16,6 +16,7 @@ export class App extends Component {
     imgSrc: '',
     imgAlt: '',
     isLoading: false,
+    imgOnRequest: 0,
   };
 
   handleSubmit = async e => {
@@ -50,6 +51,7 @@ export class App extends Component {
       this.setState({
         images: [...this.state.images, ...response],
         pageNr: this.state.pageNr + 1,
+        imgOnRequest: this.state.imgOnRequest + response.length,
       });
     } catch {
       this.setState({
@@ -105,9 +107,9 @@ export class App extends Component {
             />
           </>
         )}
-        {this.state.images.length > 0 ? (
+        {this.state.images.length >= 12 && (
           <Button onClick={this.loadMoreClick} />
-        ) : null}
+        )}
 
         {this.state.isModalOpen ? (
           <Modal
