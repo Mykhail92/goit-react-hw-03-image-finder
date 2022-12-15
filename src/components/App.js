@@ -48,10 +48,10 @@ export class App extends Component {
         this.state.currentSearch,
         this.state.pageNr + 1
       );
+      console.log(response);
       this.setState({
         images: [...this.state.images, ...response],
         pageNr: this.state.pageNr + 1,
-        imgOnRequest: this.state.imgOnRequest + response.length,
       });
     } catch {
       this.setState({
@@ -107,7 +107,7 @@ export class App extends Component {
             />
           </>
         )}
-        {this.state.images.length >= 12 && (
+        {this.state.images.length === 12 && (
           <Button onClick={this.loadMoreClick} />
         )}
 
