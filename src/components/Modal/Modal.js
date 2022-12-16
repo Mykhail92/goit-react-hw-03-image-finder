@@ -1,11 +1,20 @@
+import { Component } from 'react';
 import { Overlay, ModalItem } from './Modal.styled';
 
-export const Modal = ({ src, alt, handleCloseModal }) => {
-  return (
-    <Overlay>
-      <ModalItem>
-        <img src={src} alt={alt} onClick={handleCloseModal} />
-      </ModalItem>
-    </Overlay>
-  );
-};
+export class Modal extends Component {
+  onBackdropClick = event => {
+    console.log(event.target);
+    if (event.target !== event.currentTarget) {
+      this.props.handleClickModal();
+    }
+  };
+  render() {
+    return (
+      <Overlay onClick={this.onBackdropClick}>
+        <ModalItem>
+          <img src={this.props.src} alt={this.props.alt} />
+        </ModalItem>
+      </Overlay>
+    );
+  }
+}

@@ -21,7 +21,6 @@ export class App extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    console.dir(e);
 
     const inputForSearch = e.currentTarget.elements.inputForSearch;
     if (inputForSearch.value.trim() === '') {
@@ -63,7 +62,6 @@ export class App extends Component {
   };
 
   handleClickModal = e => {
-    console.log(e.target.name);
     this.setState({
       isModalOpen: true,
       imgSrc: e.target.name,
@@ -86,6 +84,9 @@ export class App extends Component {
 
   async componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
   }
 
   render() {
