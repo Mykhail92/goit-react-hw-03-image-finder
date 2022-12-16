@@ -21,6 +21,7 @@ export class App extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+    console.dir(e);
 
     const inputForSearch = e.currentTarget.elements.inputForSearch;
     if (inputForSearch.value.trim() === '') {
@@ -40,15 +41,16 @@ export class App extends Component {
       });
     } finally {
       this.setState({ isLoading: false });
+      inputForSearch.value = '';
     }
   };
+
   loadMoreClick = async () => {
     try {
       const response = await fetchImages(
         this.state.currentSearch,
         this.state.pageNr + 1
       );
-      console.log(response);
       this.setState({
         images: [...this.state.images, ...response],
         pageNr: this.state.pageNr + 1,
@@ -107,9 +109,9 @@ export class App extends Component {
             />
           </>
         )}
-        {this.state.images.length === 12 && (
-          <Button onClick={this.loadMoreClick} />
-        )}
+        {this.state.images.length % 12 === 0 &&
+          this.state.images.length !== 0 &&
+          !this.state.isLoading && <Button onClick={this.loadMoreClick} />}
 
         {this.state.isModalOpen ? (
           <Modal
