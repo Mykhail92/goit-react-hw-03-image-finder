@@ -4,8 +4,8 @@ import { Overlay, ModalItem } from './Modal.styled';
 export class Modal extends Component {
   onBackdropClick = event => {
     console.log(event.target);
-    if (event.target !== event.currentTarget) {
-      this.props.handleClickModal();
+    if (event.target === event.currentTarget) {
+      this.props.onClose();
     }
   };
   render() {
